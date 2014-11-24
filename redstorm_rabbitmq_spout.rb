@@ -71,12 +71,12 @@ class RedstormRabbitmqSpout < RedStorm::DSL::Spout
     unless @q.message_count < 100
       100.times do
         delivery_info, properties, payload = @q.pop(:auto_ack=>true)
-        @datablocks.push(payload)
+        unless payload.nil? then @datablocks.push(payload); end
       end
     else
       0.upto(@q.message_count) do
         delivery_info, properties, payload = @q.pop(:auto_ack=>true)
-        @datablocks.push(payload)
+        unless payload.nil? then @datablocks.push(payload); end
       end
     end
   end
