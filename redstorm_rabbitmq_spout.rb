@@ -45,7 +45,6 @@ class RedstormRabbitmqSpout < RedStorm::DSL::Spout
     unless @datablocks.class == Array then @datablocks = Array.new; end
     
     @options = {
-      :serverport=>2000,
       :mbhost=>"10.0.0.0",
       :mbport=>5672,
       :mbuser=>'guest',
